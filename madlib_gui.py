@@ -11,15 +11,9 @@ var_label_text.set("Welcome to Madlibs!\n\nPlease select an option.")
 lbl_menu = Label(root_widget, textvariable=var_label_text)
 lbl_menu.grid(row=1,column=1)                            # show the label
 
-var_label_text1 = StringVar()
-var_label_text1.set("0 - Main Menu")
-lbl_main = Label(root_widget, textvariable=var_label_text1)
-lbl_main.grid(row=2,column=1)
+btn_play = Button(text='Play Mad Libs', command=lambda: #open GUI for story menu)
+btn_play.grid
 
-var_label_text2 = StringVar()
-var_label_text2.set("1 - Pick a Madlib")
-lbl_pick = Label(root_widget, textvariable=var_label_text2)
-lbl_pick.grid(row=3,column=1)
 
 
 entry_text = Entry()                        # creates a text entry box

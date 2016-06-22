@@ -17,19 +17,7 @@
 #check for empty strings
 #make sure output looks good 
 
-
-stories_dictionary = {"0": "The <noun1> who lived. \n\
-Mr. and Mrs. <lastname1>, of number <number1>, <streetname1>, were \
-proud to say that they were perfectly <adjective1>, thank you very much. \
-They were the last people you'd expect to be involved in anything <adjective2> \
-or <adjective3> because they just didn't hold with such <noun2>. Mr. <lastname1> \
-was the director of a firm called <propernoun1>, which made <pluralnoun1>. He \
-was a <adjective4> man with hardly any <noun3>, although he did \
-have a very large <noun4>. Mrs. <lastname1> was <adjective5> and <adjective6> \
-and had nearly twice the usual amount of <noun5>, which came in very useful as \
-she spent so much of her time craning over <pluralnoun2>, spying on the <pluralnoun3>. \
-The <lastname1> family had a small son called <firstname1> and in their opinion there was \
-no finer <noun6> anywhere."}
+from madlib_stories import *
 #dictionary containing different stories
 
 blank_spaces = []
@@ -49,7 +37,11 @@ def story_choice():
 	#printing story choices, asking for choice, running 3 functions in function
 	print "0 - The _____ who lived"
 	print "1 - The _____ on fire"
-	print "Story C"
+	print "2 - _____ post"
+	print "3 - The _____ house"
+	print "4 - _____ Demented"
+	print "5 - The _____ minister"
+	print "6 - The _____ ascending"
 
 	story_title = raw_input("Please select a Madlib: ")
 	story_title = story_title.lower()
@@ -67,14 +59,18 @@ def type_blank_space(story):
 			word = word.replace(">","")
 			word = word.replace(".","")
 			word = word.replace(",","")
+			word = word.replace(";","")
+			word = word.replace("'","")
 			blank_spaces.append(word)
 
 def user_answers():
+	#takes in user input for each blank space
 	for i in blank_spaces:
 		fill_in_the_blank = raw_input("Please enter a/an %s " % (i))
 		user_input.append(fill_in_the_blank)
 
 def replacement(story):
+	#replaces blank spaces with the appropriate user input
 	user_picked_story = story
 	index = 0
 	for word in user_picked_story.split():
@@ -88,6 +84,12 @@ def replacement(story):
 				index += 1
 			elif "'s" in word:
 				user_picked_story = user_picked_story.replace(word,replacement+"'s")
+				index += 1
+			elif ";" in word:
+				user_picked_story = user_picked_story.replace(word,replacement+";")
+				index += 1
+			elif "'" in word:
+				user_picked_story = user_picked_story.replace(word,"'"+replacement+"'")
 				index += 1
 			else:
 				user_picked_story = user_picked_story.replace(word,replacement)
